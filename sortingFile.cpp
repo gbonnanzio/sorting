@@ -144,6 +144,6 @@ int *MakeArray(int arr[], int size){
 
 void PrintArray(int arr[], int size){
 	for(int i = 0; i < size; i++){
-		cout << arr[i] << "," << endl;
+		cout << arr[i] << ", " << endl;
 	}
 }
