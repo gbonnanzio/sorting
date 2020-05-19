@@ -49,24 +49,46 @@ void quickSort(int first, int last, int arr[]) {
 
 int partition (int first, int last, int arr[])
 {
-    int pivot = arr[last]; // pivot
-    int i = (first - 1); // Index of smaller element
-
-    for (int j = first; j <= last - 1; j++)
-    {
-        // If current element is smaller than the pivot
-        if (arr[j] < pivot)
-        {
-            i++; // increment index of smaller element
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
-    }
-    int temp = arr[i+1];
-    arr[i] = arr[last];
-    arr[last] = temp;
-    return (i + 1);
+//    int pivot = arr[(rand()%last)]; // pivot
+//    int i = (first - 1); // Index of smaller element
+//
+//    for (int j = first; j <= last - 1; j++)
+//    {
+//        // If current element is smaller than the pivot
+//        if (arr[j] < pivot)
+//        {
+//            i++; // increment index of smaller element
+//            int temp = arr[i];
+//            arr[i] = arr[j];
+//            arr[j] = temp;
+//        }
+//    }
+//    int temp = arr[i+1];
+//    arr[i] = arr[last];
+//    arr[last] = temp;
+//    return (i + 1);
+	int x =first;
+	int y= last;
+	int tmp;
+	int j = arr[x+1];
+	while (x<=y){
+		while (arr[x]<j){
+			x++;
+		}
+		while (arr[y]>j){
+			y--;
+		}
+		if (x<=y){
+			tmp=arr[x];
+			arr[x]=arr[y];
+			arr[y]=tmp;
+			x++;
+			y--;
+		}
+	}
+	arr[first]=arr[y];
+	arr[y]=j;
+	return y;
 }
 
 
