@@ -16,7 +16,8 @@ using namespace std;
 
 void quick_sort(int first, int last, int arr[]);
 int partition(int first, int last, int arr[]);
-
+void insertionSort (char arr[], int length);
+void selectionSort(char arr[], int len, int loops);
 
 
 #endif /* SORTINGFILE_HPP_ */
