@@ -25,6 +25,7 @@ void mergeSort(int arr[], int l1, int l2);
 void merge(int arr[], int le, int m, int r);
 void MinMaxSort(int arr[], int len, int loops);
 void PrintArray(int arr[], int size);
-
+void TimSort(int first, int last, int arr[],int n);
+void insertionSortTim(int arr[], int length, int current);
 
 #endif /* SORTINGFILE_HPP_ */

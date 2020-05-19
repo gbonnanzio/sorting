@@ -7,6 +7,45 @@
 
 //pull
 
+
+
+
+
+void TimSort(int first, int last, int arr[],int n){
+	if(first<last && (last-first)>n){
+		int newIndx = partition(first, last, arr);
+			TimSort(first, newIndx - 1, arr,n);
+			TimSort(newIndx + 1, last, arr,n);
+
+		//then we switch to insertion sort for TimSort
+	}
+	else {
+			insertionSortTim(arr,last,first+1);
+	}
+}
+
+void insertionSortTim(int arr[], int length, int current){
+	int j= 0;
+	int temp = arr[0];
+	for (int i = current + 1; i < length; i++) {
+		j = i;
+		temp = arr[j];
+		j--;
+		while (j >= 0 && temp < arr[j]){
+			  arr[j+1] = arr[j];
+			  j--;
+		 }
+		  arr[j+1] = temp;
+	}
+	return ;
+}
+
+
+
+
+
+
+
 #include "sortingFile.hpp"
 
 void quickSort(int first, int last, int arr[]) {
