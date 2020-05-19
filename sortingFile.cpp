@@ -9,41 +9,68 @@
 
 #include "sortingFile.hpp"
 
-void quick_sort(int first, int last, int arr[]) {
-  if (last - first > 1) {  // There is data to be sorted.
-    // Partition the table.
-    int pivot = partition(first, last, arr);
-
-    // Sort the left half.
-    quick_sort(first, pivot-1, arr);
-
-    // Sort the right half.
-    quick_sort(pivot + 1, last,arr);
-  }
+void quickSort(int first, int last, int arr[]) {
+	if(first<last){
+		int newIndx = partition(first, last, arr);
+		quickSort(first, newIndx - 1, arr);
+		quickSort(newIndx + 1, last, arr);
+	}
+	/*int m = partition(first, last, arr);
+	if (m - 1 > first) {
+		quickSort(first, m - 1, arr);
+	}
+	if (m + 1 < last) {
+		quickSort(m + 1, last,arr);
+	}*/
 }
 
-int partition(int first, int last, int arr[])   {
-     int  p = first;
-     int pivot = arr[first];
-      int i = first+1, j = last;
-      int tmp;
-      while (i <= j) {
-             while (arr[i] < pivot)
-                  i++;
-            while (arr[j] > pivot)
-                  j--;
-            if (i <= j) {
-                  tmp = arr[i];
-                  arr[i] = arr[j];
-                  arr[j] = tmp;
-                  i++;
-                  j--;
-            }
-      }
-      return p;
+/*int partition(int first, int last, int arr[]) {
+	int x = first;
+	int y = last;
+	int tmp;
+	int j = arr[x++];
+	while (x <= y) {
+		while (arr[x] < j)
+			x++;
+		while (arr[y] > j)
+			y--;
+		if (x <= y) {
+			tmp = arr[x];
+			arr[x] = arr[y];
+			arr[y] = tmp;
+			x++;
+			y--;
+		}
+	}
+	arr[first] = arr[y];
+	arr[y] = j;
+	return y;
+}*/
+
+int partition (int first, int last, int arr[])
+{
+    int pivot = arr[last]; // pivot
+    int i = (first - 1); // Index of smaller element
+
+    for (int j = first; j <= last - 1; j++)
+    {
+        // If current element is smaller than the pivot
+        if (arr[j] < pivot)
+        {
+            i++; // increment index of smaller element
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    int temp = arr[i+1];
+    arr[i] = arr[last];
+    arr[last] = temp;
+    return (i + 1);
 }
 
-void selectionSort(char arr[], int len, int loops) {
+
+void selectionSort(int arr[], int len, int loops) {
 	for(int i = 0; i < loops; i++) {
 		int m = i;
 		for (int j = i+1; j < len; j++) {
@@ -51,15 +78,15 @@ void selectionSort(char arr[], int len, int loops) {
 				m = j;
 			}
 		}
-		char tmp = arr[m];
+		int tmp = arr[m];
 		arr[m] = arr[i];
 		arr[i] = tmp;
 	}
 }
 
-void insertionSort (char arr[], int length){
+void insertionSort (int arr[], int length){
 	int j= 0;
-	char temp = arr[0];
+	int temp = arr[0];
 	for (int i = 1; i < length; i++) {
 		j = i;
 		temp = arr[j];
@@ -76,6 +103,9 @@ void insertionSort (char arr[], int length){
 
 
 void mergeSort(int arr[], int l1, int l2){
+	/* input: array of ints, first index, last index of list you want to sort
+	 *
+	 */
 	int k;
 	if(l1<l2){
 		k = (l1+l2)/2;
@@ -128,7 +158,7 @@ void merge(int arr[], int le, int m, int r){
 
 
 
-int *MakeArray(int arr[], int size){
+int *MakeArray(int size){
 	int * array = new int[size];
 	for (int i=0;i<size;i++){
 		array[i]=rand();
@@ -136,3 +166,12 @@ int *MakeArray(int arr[], int size){
 	return array;
 }
 
+
+
+
+void PrintArray(int arr[], int size){
+	for(int i = 0; i < size-1; i++){
+		cout << arr[i] << ", ";
+	}
+	cout<<arr[size-1]<<endl;
+}

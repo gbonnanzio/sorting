@@ -16,14 +16,14 @@
 #include <stdlib.h>
 using namespace std;
 
-int *MakeArray(int arr[], int size);
-void quick_sort(int first, int last, int arr[]);
+int *MakeArray(int size);
+void quickSort(int first, int last, int arr[]);
 int partition(int first, int last, int arr[]);
-void insertionSort (char arr[], int length);
-void selectionSort(char arr[], int len, int loops);
+void insertionSort (int arr[], int length);
+void selectionSort(int arr[], int len, int loops);
 void mergeSort(int arr[], int l1, int l2);
 void merge(int arr[], int le, int m, int r);
-
+void PrintArray(int arr[], int size);
 
 
 #endif /* SORTINGFILE_HPP_ */
