@@ -9,7 +9,9 @@
 
 int main(){
 
-
+	//random seed
+	srand(time(NULL));
+	//Testing Part A
 
 
 

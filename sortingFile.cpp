@@ -128,9 +128,6 @@ void merge(int arr[], int le, int m, int r){
 
 
 
-
-
-
 int *MakeArray(int arr[], int size){
 	int * array = new int[size];
 	for (int i=0;i<size;i++){
