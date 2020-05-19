@@ -18,6 +18,9 @@ void quick_sort(int first, int last, int arr[]);
 int partition(int first, int last, int arr[]);
 void insertionSort (char arr[], int length);
 void selectionSort(char arr[], int len, int loops);
+void mergeSort(int arr[], int l1, int l2);
+void merge(int arr[], int le, int m, int r);
+
 
 
 #endif /* SORTINGFILE_HPP_ */
