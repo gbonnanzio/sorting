@@ -175,3 +175,27 @@ void PrintArray(int arr[], int size){
 	}
 	cout<<arr[size-1]<<endl;
 }
+
+
+
+
+void MinMaxSort(int arr[], int len, int loops) {
+	for(int i = 0; i < loops; i++) {
+		int m = i;
+		int high = i;
+		for (int j = i+1; j < len; j++) {
+			if (arr[j] < arr[m]) {
+				m = j;
+			}
+			if (arr[j] > arr[high]){
+				high = j;
+			}
+		}
+		int tmp = arr[m];
+		arr[m] = arr[i];
+		arr[i] = tmp;
+		int tmp2 = arr[high];
+		arr[high] = arr[len-1];
+		arr[len-1] = tmp2;
+	}
+}
