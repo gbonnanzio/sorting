@@ -8,14 +8,14 @@
 //pull
 
 
-
+#include "sortingFile.hpp"
 
 
 void TimSort(int first, int last, int arr[],int n){
 	if(first<last && (last-first)>n){
 		int newIndx = partition(first, last, arr);
-			TimSort(first, newIndx - 1, arr,n);
-			TimSort(newIndx + 1, last, arr,n);
+		quickSort(first, newIndx, arr);
+		quickSort(newIndx + 1, last, arr);
 
 		//then we switch to insertion sort for TimSort
 	}
@@ -44,72 +44,22 @@ void insertionSortTim(int arr[], int length, int current){
 
 
 
-
-
-#include "sortingFile.hpp"
-
 void quickSort(int first, int last, int arr[]) {
 	if(first<last){
 		int newIndx = partition(first, last, arr);
-		quickSort(first, newIndx - 1, arr);
+		quickSort(first, newIndx, arr);
 		quickSort(newIndx + 1, last, arr);
 	}
-	/*int m = partition(first, last, arr);
-	if (m - 1 > first) {
-		quickSort(first, m - 1, arr);
-	}
-	if (m + 1 < last) {
-		quickSort(m + 1, last,arr);
-	}*/
 }
 
-/*int partition(int first, int last, int arr[]) {
+
+
+int partition (int first, int last, int arr[]){
 	int x = first;
 	int y = last;
 	int tmp;
-	int j = arr[x++];
-	while (x <= y) {
-		while (arr[x] < j)
-			x++;
-		while (arr[y] > j)
-			y--;
-		if (x <= y) {
-			tmp = arr[x];
-			arr[x] = arr[y];
-			arr[y] = tmp;
-			x++;
-			y--;
-		}
-	}
-	arr[first] = arr[y];
-	arr[y] = j;
-	return y;
-}*/
-
-int partition (int first, int last, int arr[])
-{
-//    int pivot = arr[(rand()%last)]; // pivot
-//    int i = (first - 1); // Index of smaller element
-//
-//    for (int j = first; j <= last - 1; j++)
-//    {
-//        // If current element is smaller than the pivot
-//        if (arr[j] < pivot)
-//        {
-//            i++; // increment index of smaller element
-//            int temp = arr[i];
-//            arr[i] = arr[j];
-//            arr[j] = temp;
-//        }
-//    }
-//    int temp = arr[i+1];
-//    arr[i] = arr[last];
-//    arr[last] = temp;
-//    return (i + 1);
-	int x =first;
-	int y= last;
-	int tmp;
-	int j = arr[x+1];
+	int j = arr[x];
+	x++;
 	while (x<=y){
 		while (arr[x]<j){
 			x++;
