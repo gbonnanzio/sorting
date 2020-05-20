@@ -2,7 +2,7 @@
  * sortingFile.cpp
  *
  *  Created on: May 19, 2020
- *  Partners: Geoff Bonnanzio, Chloe Griffiths, Nick Samulewicz
+ *      Author: gbonn
  */
 
 //pull
@@ -12,6 +12,10 @@
 
 
 void TimSort(int first, int last, int arr[],int n){
+	/* Input: first indx, last indx, array of ints, number of ints in partition
+	 * Output: none
+	 * Action: sorts the list using two methods, quickSort and insertionSort
+	 */
 	if(first<last && (last-first)>n){
 		int newIndx = partition(first, last, arr);
 		quickSort(first, newIndx, arr);
@@ -25,6 +29,10 @@ void TimSort(int first, int last, int arr[],int n){
 }
 
 void insertionSortTim(int arr[], int length, int current){
+	/* Input: array of ints, last index of partition, current starting index of partition
+	 * Output: none
+	 * Action: sorts the list by inserting elements into list one by one
+	 */
 	int j= 0;
 	int temp = arr[0];
 	for (int i = current + 1; i < length; i++) {
@@ -45,47 +53,55 @@ void insertionSortTim(int arr[], int length, int current){
 
 
 void quickSort(int first, int last, int arr[]) {
+	/* Input: first indx, last indx, array of ints
+	 * Output: none
+	 * Action: recursively sorts the list by assigning a pivot value and
+	 * breaking the list into two parts, those that are lower than the that
+	 * value in the front half and values higher than the pivot in the back half
+	 * function is then called on these two halves
+	 */
 	if(first<last){
-		int newIndx = partition(first, last, arr);
-		quickSort(first, newIndx, arr);
-		quickSort(newIndx + 1, last, arr);
+		int pivotIndx = partition(first, last, arr);
+		quickSort(first, pivotIndx, arr);
+		quickSort(pivotIndx + 1, last, arr);
 	}
 }
 
 
 
 int partition (int first, int last, int arr[]){
-	int x = first;
-	int y = last;
+	/* Input: first index, last index, array of ints to be sorted
+	 * Output: the index of where the pivot value is placed
+	 * Action: runs through the list from the front and from the back placing
+	 * values into two groups until all values have been sorted
+	 */
+	int up = first;
+	int down = last;
 	int tmp;
-	int j = arr[x];
-	x++;
-	while (x<=y){
-		while (arr[x]<j){
-			x++;
+	int pivot = arr[up];
+	up++;
+	while (up<=down){
+		while (arr[up]<pivot){
+			up++;
 		}
-		while (arr[y]>j){
-			y--;
+		while (arr[down]>pivot){
+			down--;
 		}
-		if (x<=y){
-			tmp=arr[x];
-			arr[x]=arr[y];
-			arr[y]=tmp;
-			x++;
-			y--;
+		if (up<=down){
+			tmp=arr[up];
+			arr[up]=arr[down];
+			arr[down]=tmp;
+			up++;
+			down--;
 		}
 	}
-	arr[first]=arr[y];
-	arr[y]=j;
-	return y;
+	arr[first] = arr[down];
+	arr[down] = pivot;
+	return down;
 }
 
 
 void selectionSort(int arr[], int len, int loops) {
-	/* input: array of ints, length of array, number of times sorting is done
-	* output: void
-	* action: Finds minimum value in remaining part of array, swaps it with current value.
-	*/
 	for(int i = 0; i < loops; i++) {
 		int m = i;
 		for (int j = i+1; j < len; j++) {
@@ -100,10 +116,6 @@ void selectionSort(int arr[], int len, int loops) {
 }
 
 void insertionSort (int arr[], int length){
-	/* input: array of ints, length of array
-	* output: void
-	* action: takes an array and a new value after, moves nodes in array up until new value fits correctly.
-	*/
 	int j= 0;
 	int temp = arr[0];
 	for (int i = 1; i < length; i++) {
@@ -123,8 +135,7 @@ void insertionSort (int arr[], int length){
 
 void mergeSort(int arr[], int l1, int l2){
 	/* input: array of ints, first index, last index of list you want to sort
-	 * output: void
-	 * action: Splits array in half until subarrays are size 1, then merges them in order.
+	 *
 	 */
 	int k;
 	if(l1<l2){
@@ -136,10 +147,6 @@ void mergeSort(int arr[], int l1, int l2){
 }
 
 void merge(int arr[], int le, int m, int r){
-	/* input: array of ints, length of first subarray, middle index, length of second subarray
-	* output: void
-	* action: helper for mergesort, combines the arrays in order
-	*/
 	int i, j, k;
 	int lenL = m - le + 1;
 	int lenR = r - m;
@@ -183,10 +190,6 @@ void merge(int arr[], int le, int m, int r){
 
 
 int *MakeArray(int size){
-	/* input: length of array
-	* output: array of ints
-	* action: constructs an array (of inputed size) of random integers.
-	*/
 	int * array = new int[size];
 	for (int i=0;i<size;i++){
 		array[i]=rand();
@@ -198,10 +201,6 @@ int *MakeArray(int size){
 
 
 void PrintArray(int arr[], int size){
-	/* input: array of ints, length of array
-	* output: void
-	* action: prints array
-	*/
 	for(int i = 0; i < size-1; i++){
 		cout << arr[i] << ", ";
 	}
@@ -212,10 +211,6 @@ void PrintArray(int arr[], int size){
 
 
 void MinMaxSort(int arr[], int len, int loops) {
-	/* input: array of ints, length of array, number of times sorting is done (needs to be half of array size or more)
-	* output: void
-	* action: Performs same action as selectionSort, but keeps track of highest value and places it at the end as well.
-	*/
 	for(int i = 0; i < loops; i++) {
 		int m = i;
 		int high = i;
