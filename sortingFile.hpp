@@ -2,7 +2,7 @@
  * sortingFile.hpp
  *
  *  Created on: May 19, 2020
- *      Author: gbonn
+ *  Partners: Geoff Bonnanzio, Chloe Griffiths, Nick Samulewicz
  */
 
 #ifndef SORTINGFILE_HPP_

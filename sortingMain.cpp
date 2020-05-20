@@ -2,7 +2,7 @@
  * sortingMain.cpp
  *
  *  Created on: May 19, 2020
- *      Author: gbonn
+ *  Partners: Geoff Bonnanzio, Chloe Griffiths, Nick Samulewicz
  */
 
 #include "sortingFile.hpp"
@@ -15,15 +15,15 @@ int main() {
 	//random seed
 	srand(time(NULL));
 	//Testing Part A
-	int *testArr = MakeArray(100);
+	//int *testArr = MakeArray(100);
 	//selectionSort(testArr, 100, 100);
 	//mergeSort(testArr,0,99);
 	//quickSort(0, 99, testArr);
 	//insertionSort(testArr, 100);
-	MinMaxSort(testArr, 100, 50);
+	//MinMaxSort(testArr, 100, 50);
 	//TimSort(0,99,testArr,10);
-	PrintArray(testArr, 100);
-	delete testArr;
+	//PrintArray(testArr, 100);
+	//delete testArr;
 
 	//Testing Part B
 
@@ -97,7 +97,7 @@ int main() {
 	for (int i = 0; i < 5; i++) {
 		int *testArr2 = MakeArray(10000);
 		auto start = high_resolution_clock::now();
-		MinMaxSort(testArr2, 10000, 10000);
+		MinMaxSort(testArr2, 10000, 5000);
 		auto stop = high_resolution_clock::now();
 		auto duration = duration_cast<microseconds>(stop - start);
 		int ms = duration.count();
