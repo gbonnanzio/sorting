@@ -194,7 +194,7 @@ void MinMaxSort(int arr[], int len, int loops) {
 	for(int i = 0; i < loops; i++) {
 		int m = i;
 		int high = i;
-		for (int j = i+1; j < len; j++) {
+		for (int j = i; j < len; j++) {
 			if (arr[j] < arr[m]) {
 				m = j;
 			}
@@ -208,5 +208,6 @@ void MinMaxSort(int arr[], int len, int loops) {
 		int tmp2 = arr[high];
 		arr[high] = arr[len-1];
 		arr[len-1] = tmp2;
+		len--;
 	}
 }//

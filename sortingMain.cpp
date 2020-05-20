@@ -20,8 +20,8 @@ int main() {
 	//mergeSort(testArr,0,99);
 	//quickSort(0, 99, testArr);
 	//insertionSort(testArr, 100);
-	//MinMaxSort(testArr, 100, 100);
-	TimSort(0,99,testArr,10);
+	MinMaxSort(testArr, 100, 50);
+	//TimSort(0,99,testArr,10);
 	PrintArray(testArr, 100);
 	delete testArr;
 
