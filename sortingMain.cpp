@@ -15,18 +15,20 @@ int main() {
 	//random seed
 	srand(time(NULL));
 	//Testing Part A
-	//int *testArr = MakeArray(100);
-	//selectionSort(testArr, 100, 100);
+	cout << "Testing Part A"<< endl;
+	int *testArr = MakeArray(100);
+	selectionSort(testArr, 100, 100);
 	//mergeSort(testArr,0,99);
 	//quickSort(0, 99, testArr);
 	//insertionSort(testArr, 100);
 	//MinMaxSort(testArr, 100, 50);
 	//TimSort(0,99,testArr,10);
-	//PrintArray(testArr, 100);
-	//delete testArr;
+	cout << "We sorted the array using SelectionSort:"<<endl;
+	PrintArray(testArr,100);
+	delete testArr;
 
 	//Testing Part B
-
+	cout <<"Testing Part B"<<endl;
 	//mergeSort
 	double average = 0.0;
 	for (int i = 0; i < 5; i++) {
@@ -85,12 +87,26 @@ int main() {
 		auto duration = duration_cast<microseconds>(stop - start);
 		int ms = duration.count();
 		//cout << "Time for QuickSort is " << ms <<endl;
-
 		average4 = average4 + ms;
 		delete testArr2;
 	}
 	average4 = average4 / 5.0;
 	cout << "Average for quickSort is " << average4 << endl;
+
+
+	//Part C
+	cout <<"Testing Part C" <<endl;
+	int *testMinMax = MakeArray(100);
+	MinMaxSort(testArr, 100, 50);
+	cout << "Testing MinMaxSort"<< endl;
+	PrintArray(testMinMax,100);
+	delete testMinMax;
+
+	int *testTim = MakeArray(1000);
+	TimSort(0,999,testTim, 100);
+	cout << "Testing TimSort"<< endl;
+	PrintArray(testTim,1000);
+	delete testTim;
 
 	//minmaxSort
 	double average5 = 0.0;
@@ -102,7 +118,6 @@ int main() {
 		auto duration = duration_cast<microseconds>(stop - start);
 		int ms = duration.count();
 		//cout << "Time for minmaxSort is " << ms <<endl;
-
 		average5 = average5 + ms;
 		delete testArr2;
 	}
@@ -114,12 +129,11 @@ int main() {
 	for (int i = 0; i < 5; i++) {
 		int *testArr2 = MakeArray(10000);
 		auto start = high_resolution_clock::now();
-		TimSort(0, 10000,testArr2, 100);
+		TimSort(0, 9999,testArr2, 100);
 		auto stop = high_resolution_clock::now();
 		auto duration = duration_cast<microseconds>(stop - start);
 		int ms = duration.count();
 		//cout << "Time for minmaxSort is " << ms <<endl;
-
 		average6 = average6 + ms;
 		delete testArr2;
 	}
